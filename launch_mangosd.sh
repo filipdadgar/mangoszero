@@ -15,12 +15,12 @@
 
 BINDIR=/etc/mangos/bin
 CONFDIR=/etc/mangos/conf
-CONFIGS=/tmp
+#CONFIGS=/tmp
 
 
 # seed with defaults included in the container image, this is the
 # case when /mangosconf is not specified
-cp $CONFDIR/* /tmp
+#cp $CONFDIR/* /tmp
 
 if [ -f /mangosconf/mangosd.conf ]; then
 	echo "/mangosconf/mangosd.conf is being used"
@@ -36,4 +36,4 @@ sed -i "s/LOGIN_DATABASE_INFO/$LOGIN_DATABASE_INFO/g" $CONFIGS/mangosd.conf
 sed -i "s/WORLD_DATABASE_INFO/$WORLD_DATABASE_INFO/g" $CONFIGS/mangosd.conf
 sed -i "s/CHARACTER_DATABASE_INFO/$CHARACTER_DATABASE_INFO/g" $CONFIGS/mangosd.conf
 
-/etc/mangos/bin/mangosd -c $CONFIGS/mangosd.conf
+/etc/mangos/bin/mangosd -c /mangosconf/mangosd.conf
